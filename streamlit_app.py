@@ -321,7 +321,11 @@ def test(gbm):
 #     st.write(desired_representationAbove);
    
 
-st.button("Calculate the house price",on_click=test(gbm))
+buttomPress = st.button("Calculate the house price")
+if (buttomPress):
+    test(gbm)
+    buttomPress= False
+
 
 
 
