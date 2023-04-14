@@ -47,7 +47,7 @@ shap_values = explainer(X_test)
 # shap_values = explainer.shap_values(X)
 
 # visualize the first prediction's explanation (use matplotlib=True to avoid Javascript)
-st_shap(shap.force_plot(shap_values, plot_type='violin',matplotlib=True),400)
+st_shap(shap.summary_plot(shap_values, plot_type='violin'))
 
 # visualize the training set predictions
 
