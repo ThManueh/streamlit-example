@@ -300,7 +300,7 @@ def test(gbm):
     
     
    desired_representationa = "{:0,.4f}".format(best_value)
-    st.write(desired_representationa);
+   st.write(desired_representationa);
 #     st.write(desired_representationBellow);
 #     st.write(desired_representationAbove);
     
