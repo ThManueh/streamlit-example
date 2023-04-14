@@ -6,3 +6,4 @@ sklearn
 matplotlib
 xgboost
 streamlit-shap
+lightgbm 
