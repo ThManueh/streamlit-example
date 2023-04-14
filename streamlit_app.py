@@ -38,6 +38,8 @@ X_test = X_test[np.isfinite(X_test).all(1)]
 
 explainer = shap.Explainer(model.predict, X_test)
 shap_values = explainer(X_test)
+st_shap(shap.plots.beeswarm(shap_values), height=300)
+
 
 # model = xgboost.train({"learning_rate": 0.01}, xgboost.DMatrix(X, label=y), 100)
 
@@ -47,7 +49,7 @@ shap_values = explainer(X_test)
 # shap_values = explainer.shap_values(X)
 
 # visualize the first prediction's explanation (use matplotlib=True to avoid Javascript)
-st_shap(shap.summary_plot(shap_values, plot_type='violin'))
+# st_shap(shap.summary_plot(shap_values, plot_type='violin'))
 
 # visualize the training set predictions
 
