@@ -42,15 +42,15 @@ X_test = X_test[np.isfinite(X_test).all(1)]
 explainer = shap.Explainer(model.predict, X_test)
 shap_values = explainer(X_test)
 
-model = xgboost.train({"learning_rate": 0.01}, xgboost.DMatrix(X, label=y), 100)
+# model = xgboost.train({"learning_rate": 0.01}, xgboost.DMatrix(X, label=y), 100)
 
-# explain the model's predictions using SHAP
-# (same syntax works for LightGBM, CatBoost, scikit-learn and spark models)
-explainer = shap.TreeExplainer(model)
-shap_values = explainer.shap_values(X)
+# # explain the model's predictions using SHAP
+# # (same syntax works for LightGBM, CatBoost, scikit-learn and spark models)
+# explainer = shap.TreeExplainer(model)
+# shap_values = explainer.shap_values(X)
 
 # visualize the first prediction's explanation (use matplotlib=True to avoid Javascript)
-st_shap(shap.summary_plot(shap_values, plot_type='violin'))
+st_shap(shap.summary_plot(shap_values, plot_type='violin'),400)
 
 # visualize the training set predictions
 
