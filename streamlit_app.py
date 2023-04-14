@@ -300,7 +300,7 @@ def test():
 st.button("sup",on_click=test)
 
 
-st_shap(shap.interaction_plot(train1()))
+st_shap(shap.interaction_plot("YrSold", "MSSubClass", train1()))
 st_shap(shap.summary_plot(train1(), plot_type='violin'))
 
 
