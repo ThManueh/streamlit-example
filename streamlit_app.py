@@ -302,24 +302,14 @@ st.button("sup",on_click=test)
 val = train1()
 
 
-# feature1_idx = 0 # index of first feature
-# feature2_idx = 1 # index of second feature
+testData = pd.read_csv("test.csv")
 
-# shap_interaction_values = explainer.shap_interaction_values(X)
-
-# # Plot the interaction effect between the two features
-# shap.dependence_plot(
-#     (feature1_idx, feature2_idx),
-#     shap_interaction_values,
-#     X,
-#     feature_names=boston.feature_names
-# )
+testData = testData.drop('Id', axis=1)
+X_test = testData.select_dtypes(include=['float64', 'int64'])
+X_test = X_test[np.isfinite(X_test).all(1)]
 
 
-
-
-
-st_shap(shap.dependence_plot(val))
+st_shap(shap.dependence_plot(0, val, X_test))
 st_shap(shap.summary_plot(val, plot_type='violin'))
 
 
