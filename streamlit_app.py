@@ -256,6 +256,11 @@ def train():
 
 
 
+
+
+
+
+
 gbm = train()
 def test():
 
@@ -280,12 +285,6 @@ def test():
 
 #     #st_shap(shap.summary_plot(shap_values), height=1080)
 #     st_shap(shap.summary_plot(shap_values, plot_type='violin'), height=1080)
-
-st.button("sup",on_click=test)
-
-
-
-
 
 
 @st.cache
@@ -317,6 +316,12 @@ def displaySHAP():
 
 
 displaySHAP();
+st.button("sup",on_click=test)
+
+
+
+
+
 
 
 
