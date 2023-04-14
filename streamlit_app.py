@@ -287,7 +287,7 @@ def train1():
 
 
 
-st_shap(shap.summary_plot(shap_values, plot_type='violin'))
+st_shap(shap.summary_plot(train1(), plot_type='violin'))
 
 
 
