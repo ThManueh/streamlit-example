@@ -115,9 +115,9 @@ def bind_socket():
         return error
 
     study = optuna.create_study(direction='minimize')
-    study.optimize(objective, n_trials=1);
+    study.optimize(objective, n_trials=1000);
 
-    print("The Best value was: ", study.best_value);
+    #print("The Best value was: ", study.best_value);
 
     return study.best_params,study.best_value
 best_params,best_value   = bind_socket()
