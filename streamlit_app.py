@@ -42,7 +42,7 @@ explainer = shap.Explainer(model, X)
 shap_values = explainer(X)
 
 st_shap(shap.plots.waterfall(shap_values[0]), height=300)
-st_shap(shap.plots.beeswarm(shap_values), height=300)
+st_shap(shap.plots.beeswarm(shap_values), height=400)
 
 
 # import shap
