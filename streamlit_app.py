@@ -257,8 +257,8 @@ def train():
 
 
 
-@st.cache
-def train1():
+
+def train1(df):
 
     trainData = pd.read_csv("train.csv")
     testData = pd.read_csv("test.csv")
@@ -275,13 +275,13 @@ def train1():
     model.fit(X_train, y_train)
 
 
-    testData = testData.drop('Id', axis=1)
-    X_test = testData.select_dtypes(include=['float64', 'int64'])
-    X_test = X_test[np.isfinite(X_test).all(1)]
+#     testData = testData.drop('Id', axis=1)
+#     X_test = testData.select_dtypes(include=['float64', 'int64'])
+#     X_test = X_test[np.isfinite(X_test).all(1)]
 
 
-    explainer = shap.Explainer(model.predict, X_test)
-    shap_values = explainer(X_test)
+    explainer = shap.Explainer(model.predict, df)
+    shap_values = explainer(df)
     
     return shap_values
 
@@ -290,27 +290,32 @@ def train1():
 gbm = train()
 def test():
     df = pd.DataFrame(mydict)
+    
+    
+    
+    
     desired_representation = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0])
     st.write(desired_representation);
-
+    
+    st_shap(shap.summary_plot(train1(df), plot_type='violin'))
 
 
 
 
 st.button("sup",on_click=test)
 
-val = train1()
+#val = train1()
 
 
-testData = pd.read_csv("test.csv")
+# testData = pd.read_csv("test.csv")
 
-testData = testData.drop('Id', axis=1)
-X_test = testData.select_dtypes(include=['float64', 'int64'])
-X_test = X_test[np.isfinite(X_test).all(1)]
+# testData = testData.drop('Id', axis=1)
+# X_test = testData.select_dtypes(include=['float64', 'int64'])
+# X_test = X_test[np.isfinite(X_test).all(1)]
 
 
-st_shap(shap.dependence_plot(ind = 0,shap_values = val, features = X_test))
-st_shap(shap.summary_plot(val, plot_type='violin'))
+#st_shap(shap.dependence_plot(ind = 0,shap_values = val, features = X_test))
+
 
 
 
