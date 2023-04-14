@@ -6,4 +6,5 @@ sklearn
 matplotlib
 xgboost
 streamlit-shap
-lightgbm 
+lightgbm
+optuna
