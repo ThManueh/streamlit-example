@@ -49,7 +49,7 @@ shap_values = explainer(X_test)
 #shap.plots.beeswarm(shap_values)
 
 st_shap(shap.plots.waterfall(shap_values[0]), height=300)
-st_shap(shap.summary_plot(shap_values, plot_type='violin')), height=1080)
+st_shap(shap.summary_plot(shap_values, plot_type='violin'), height=1080)
 #st_shap(shap.plots.beeswarm(shap_values), height=400)
 
 # import shap
