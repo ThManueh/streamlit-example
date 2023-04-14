@@ -249,17 +249,11 @@ def train():
 
     X_train = df_num.drop("SalePrice", axis=1)
     y_train = df_num["SalePrice"]
-
-    lower = lgb.LGBMRegressor(objective='quantile', alpha=1 - 0.95)
     lgb_train = lgb.Dataset(X_train, y_train)
-    lower = lower.train(params=best_params, train_set=lgb_train)
+    gbm = lgb.train(params=best_params, train_set=lgb_train)
     
-    upper = lgb.LGBMRegressor(objective = 'quantile', alpha = 0.95)
-    lgb_train = lgb.Dataset(X_train, y_train)
-    upper = upper.train(params=best_params, train_set=lgb_train)
 
-
-    return lower,upper;
+    return gbm;
 
 
 
@@ -294,11 +288,11 @@ def train1():
 
 
 
-lower,upper = train()
+gbm = train()
 
 
 
-def test(upper,lower):
+def test(gbm):
 
     df = pd.DataFrame(mydict)
 
@@ -306,14 +300,12 @@ def test(upper,lower):
 #     desired_representationBellow = "{:0,.4f}".format((gbm.predict(df, num_iteration=gbm.best_iteration)[0])-best_value)
 #     desired_representationAbove = "{:0,.4f}".format((gbm.predict(df, num_iteration=gbm.best_iteration)[0])+best_value)
     
-    desired_representationLow = "{:0,.4f}".format(lower.predict(df, num_iteration=lower.best_iteration)[0]);
+    desired_representationLow = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0]);
     st.write(desired_representationLow)
 
-    desired_representationLow = "{:0,.4f}".format(upper.predict(df, num_iteration=upper.best_iteration)[0]);
-    st.write(desired_representationLow)
     
-    # desired_representationa = "{:0,.4f}".format(best_value)
-    # st.write(desired_representationa)
+    desired_representationa = "{:0,.4f}".format(best_value)
+    st.write(desired_representationa)
 #     st.write(desired_representationBellow);
 #     st.write(desired_representationAbove);
    
@@ -322,15 +314,7 @@ def test(upper,lower):
 
 
 
-
-
-
-
-
-
-
-
-st.button("Calculate the house price",on_click=test(lower,upper))
+st.button("Calculate the house price",on_click=test(gbm))
 st.title('Streamlit is **_really_ cool**.')
 #val = train1()
 
