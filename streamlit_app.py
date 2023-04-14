@@ -8,38 +8,45 @@ import xgboost
 import numpy as np
 import pandas as pd
 
+trainData = pd.read_csv("train.csv")
+testData = pd.read_csv("test.csv")
 
-@st.experimental_memo
-def load_data():
-    return shap.datasets.adult()
+trainData = trainData.drop('Id', axis=1)
+df_num = trainData.select_dtypes(include=['float64', 'int64'])
+df_num = df_num[np.isfinite(df_num).all(1)]
 
-@st.experimental_memo
-def load_model(X, y):
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=7)
-    d_train = xgboost.DMatrix(X_train, label=y_train)
-    d_test = xgboost.DMatrix(X_test, label=y_test)
-    params = {
-        "eta": 0.01,
-        "objective": "binary:logistic",
-        "subsample": 0.5,
-        "base_score": np.mean(y_train),
-        "eval_metric": "logloss",
-        "n_jobs": -1,
-    }
-    model = xgboost.train(params, d_train, 10, evals = [(d_test, "test")], verbose_eval=100, early_stopping_rounds=20)
-    return model
+X_train = df_num.drop("SalePrice", axis=1)
+y_train = df_num["SalePrice"]
 
-st.title("SHAP in Streamlit")
+# print(X_train)
+# print(X_train.shape)
 
-# train XGBoost model
-X,y = load_data()
-X_display,y_display = shap.datasets.adult(display=True)
+model = LinearRegression()
+model.fit(X_train, y_train)
 
-model = load_model(X, y)
+testData = testData.drop('Id', axis=1)
 
-# compute SHAP values
-explainer = shap.Explainer(model, X)
-shap_values = explainer(X)
+
+print(testData)
+X_test = testData.select_dtypes(include=['float64', 'int64'])
+X_test = X_test[np.isfinite(X_test).all(1)]
+
+
+
+# X_test = X_test.drop('Alley')
+# X_test = X_test.drop('FireplaceQu')
+# X_test = X_test.drop('MasVnrType')
+# X_test = X_test.drop('PoolQC')
+
+#print(X_test)
+
+
+explainer = shap.Explainer(model.predict, X_test)
+shap_values = explainer(X_test)
+#print(shap_values)
+#shap.waterfall_plot(shap_values)
+#print(model.predict(X_test))
+#shap.plots.beeswarm(shap_values)
 
 st_shap(shap.plots.waterfall(shap_values[0]), height=300)
 st_shap(shap.plots.beeswarm(shap_values), height=400)
