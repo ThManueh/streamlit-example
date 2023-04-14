@@ -296,7 +296,7 @@ def test(gbm):
 #     desired_representationAbove = "{:0,.4f}".format((gbm.predict(df, num_iteration=gbm.best_iteration)[0])+best_value)
     
     desired_representation = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0])
-     st.write(desired_representation);
+    st.write(desired_representation);
         
 #     st.write(desired_representationBellow);
 #     st.write(desired_representationAbove);
