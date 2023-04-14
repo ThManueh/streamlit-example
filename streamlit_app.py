@@ -249,11 +249,23 @@ def train():
 
     X_train = df_num.drop("SalePrice", axis=1)
     y_train = df_num["SalePrice"]
-    lgb_train = lgb.Dataset(X_train, y_train)
-    gbm = lgb.train(params=best_params, train_set=lgb_train)
-    
 
-    return gbm;
+
+    # lgb_train = lgb.Dataset(X_train, y_train)
+    # gbm = lgb.train(params=best_params, train_set=lgb_train)
+
+    gbm = lgb.LGBMRegressor(objective='quantile', alpha=1 - 0.95)
+    lgb_train = lgb.Dataset(X_train, y_train)
+    lower = gbm.train(params=best_params, train_set=lgb_train)
+
+
+
+
+    # upper = lgb.LGBMRegressor(objective='quantile', alpha=0.95)
+    # lgb_train = lgb.Dataset(X_train, y_train)
+    # upper = upper.train(params=best_params, train_set=lgb_train)
+
+    return lower;
 
 
 
