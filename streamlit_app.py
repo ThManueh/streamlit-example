@@ -86,7 +86,7 @@ st_shap(shap.plots.beeswarm(shap_values), height=300)
 # explainer = shap.Explainer(model.predict, X_test)
 # shap_values = explainer(X_test)
 # prin(shap_values)
-# st_shap(shap.plots.beeswarm(shap_values), height=300)
+# st_shap(shap.plots.beeswarm(shap_values), height=800)
 
 
 
