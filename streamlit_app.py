@@ -308,10 +308,10 @@ def test(gbm):
 
 #     desired_representationBellow = "{:0,.4f}".format((gbm.predict(df, num_iteration=gbm.best_iteration)[0])-best_value)
 #     desired_representationAbove = "{:0,.4f}".format((gbm.predict(df, num_iteration=gbm.best_iteration)[0])+best_value)
-    
-    desired_representationLow = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0]);
+
+    desired_representationLow = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0].lower_bound());
     st.write(desired_representationLow)
-    st.write(gbm.lower_bound())
+    #st.write(gbm.lower_bound())
     
     desired_representationa = "{:0,.4f}".format(best_value)
     st.write(desired_representationa)
