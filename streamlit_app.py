@@ -301,7 +301,25 @@ st.button("sup",on_click=test)
 
 val = train1()
 
-st_shap(shap.summary_plot(val, plot_type='compact_dot'))
+
+# feature1_idx = 0 # index of first feature
+# feature2_idx = 1 # index of second feature
+
+# shap_interaction_values = explainer.shap_interaction_values(X)
+
+# # Plot the interaction effect between the two features
+# shap.dependence_plot(
+#     (feature1_idx, feature2_idx),
+#     shap_interaction_values,
+#     X,
+#     feature_names=boston.feature_names
+# )
+
+
+
+
+
+st_shap(shap.dependence_plot(0, val[0], X, ))
 st_shap(shap.summary_plot(val, plot_type='violin'))
 
 
