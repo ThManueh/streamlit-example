@@ -5,4 +5,4 @@ shap
 sklearn
 matplotlib
 xgboost
-streamlit_shap
+streamlit-shap
