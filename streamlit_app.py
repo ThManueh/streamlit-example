@@ -326,7 +326,7 @@ def test(gbm):
 
 
 st.button("Calculate the house price",on_click=test(gbm))
-st_shap(shap.summary_plot(ShapValue(), plot_type='violin'))
+#st_shap(shap.summary_plot(ShapValue(), plot_type='violin'))
 #val = train1()
 
 
