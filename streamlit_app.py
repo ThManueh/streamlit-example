@@ -38,6 +38,7 @@ X_test = X_test[np.isfinite(X_test).all(1)]
 
 explainer = shap.Explainer(model.predict, X_test)
 shap_values = explainer(X_test)
+prin(shap_values)
 st_shap(shap.plots.beeswarm(shap_values), height=300)
 
 
