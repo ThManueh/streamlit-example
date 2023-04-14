@@ -258,7 +258,7 @@ def train():
 
 
 
-def train1(df):
+def train1():
 
     trainData = pd.read_csv("train.csv")
     testData = pd.read_csv("test.csv")
@@ -275,13 +275,13 @@ def train1(df):
     model.fit(X_train, y_train)
 
 
-#     testData = testData.drop('Id', axis=1)
-#     X_test = testData.select_dtypes(include=['float64', 'int64'])
-#     X_test = X_test[np.isfinite(X_test).all(1)]
+     testData = testData.drop('Id', axis=1)
+     X_test = testData.select_dtypes(include=['float64', 'int64'])
+     X_test = X_test[np.isfinite(X_test).all(1)]
 
 
-    explainer = shap.Explainer(model.predict, df)
-    shap_values = explainer(df)
+    explainer = shap.Explainer(model.predict, X_test)
+    shap_values = explainer(X_test)
     
     return shap_values
 
@@ -297,41 +297,14 @@ def test():
     desired_representation = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0])
     st.write(desired_representation);
     
-    
-    trainData = pd.read_csv("train.csv")
-    testData = pd.read_csv("test.csv")
 
-
-    trainData = trainData.drop('Id', axis=1)
-    df_num = trainData.select_dtypes(include=['float64', 'int64'])
-    df_num = df_num[np.isfinite(df_num).all(1)]
-    X_train = df_num.drop("SalePrice", axis=1)
-    y_train = df_num["SalePrice"]
-
-
-    model = sklearn.linear_model.LinearRegression()
-    model.fit(X_train, y_train)
-
-
-#     testData = testData.drop('Id', axis=1)
-#     X_test = testData.select_dtypes(include=['float64', 'int64'])
-#     X_test = X_test[np.isfinite(X_test).all(1)]
-
-
-    explainer = shap.Explainer(model.predict, df)
-    shap_values = explainer(df)
-    
-    
-    
-    
-    
     
     
     
     
  
     
-    st_shap(shap.summary_plot(shap_values, plot_type='violin'))
+    st_shap(shap.summary_plot(train1(), plot_type='violin'))
 
 
 
