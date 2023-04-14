@@ -238,20 +238,20 @@ mydict = [
 #print('Minimum mean squared error: ' + str(study.best_value))
 print('Best parameter: ' + str(best_params))
 
+trainData = pd.read_csv("train.csv")
+testData = pd.read_csv("test.csv")
 
+trainData = trainData.drop('Id', axis=1)
+df_num = trainData.select_dtypes(include=['float64', 'int64'])
+df_num = df_num[np.isfinite(df_num).all(1)]
+
+X_train = df_num.drop("SalePrice", axis=1)
+y_train = df_num["SalePrice"]
+lgb_train = lgb.Dataset(X_train, y_train)
+gbm = lgb.train(params=best_params, train_set=lgb_train)
+    
 def test():
-    trainData = pd.read_csv("train.csv")
-    testData = pd.read_csv("test.csv")
 
-    trainData = trainData.drop('Id', axis=1)
-    df_num = trainData.select_dtypes(include=['float64', 'int64'])
-    df_num = df_num[np.isfinite(df_num).all(1)]
-
-    X_train = df_num.drop("SalePrice", axis=1)
-    y_train = df_num["SalePrice"]
-
-    lgb_train = lgb.Dataset(X_train, y_train)
-    gbm = lgb.train(params=best_params, train_set=lgb_train)
 
     df = pd.DataFrame(mydict)
 
