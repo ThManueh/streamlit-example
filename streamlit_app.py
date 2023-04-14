@@ -275,9 +275,9 @@ def train1():
     model.fit(X_train, y_train)
 
 
-     testData = testData.drop('Id', axis=1)
-     X_test = testData.select_dtypes(include=['float64', 'int64'])
-     X_test = X_test[np.isfinite(X_test).all(1)]
+    testData = testData.drop('Id', axis=1)
+    X_test = testData.select_dtypes(include=['float64', 'int64'])
+    X_test = X_test[np.isfinite(X_test).all(1)]
 
 
     explainer = shap.Explainer(model.predict, X_test)
