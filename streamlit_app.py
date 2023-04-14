@@ -303,15 +303,8 @@ def test(gbm):
    st.write(desired_representationa);
 #     st.write(desired_representationBellow);
 #     st.write(desired_representationAbove);
-    
-
-    
-    
-    
-    
- 
-    
-    st_shap(shap.summary_plot(train1(), plot_type='violin'))
+   
+   st_shap(shap.summary_plot(train1(), plot_type='violin'))
 
 
 
