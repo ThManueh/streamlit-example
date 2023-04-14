@@ -319,7 +319,7 @@ val = train1()
 
 
 
-st_shap(shap.dependence_plot(0, val[0]))
+st_shap(shap.dependence_plot(val))
 st_shap(shap.summary_plot(val, plot_type='violin'))
 
 
