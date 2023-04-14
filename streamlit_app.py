@@ -282,13 +282,12 @@ def train1():
 
     explainer = shap.Explainer(model.predict, X_test)
     shap_values = explainer(X_test)
-    st_shap(shap.summary_plot(shap_values, plot_type='violin'))
-    return none
+    
+    return shap_values
 
 
-train1()
 
-
+st_shap(shap.summary_plot(shap_values, plot_type='violin'))
 
 
 
