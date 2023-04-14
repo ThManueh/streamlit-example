@@ -301,7 +301,7 @@ def ShapValue():
 gbm = train()
 
 
-@st.cache
+
 def test(gbm):
 
     df = pd.DataFrame(mydict)
