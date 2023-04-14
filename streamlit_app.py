@@ -302,7 +302,7 @@ st.button("sup",on_click=test)
 val = train1()
 
 #st_shap(shap.summary_plot(val, plot_type='interaction'))
-st_shap(shap.summary_plot(val, plot_type='violin'), height = 1080)
+st_shap(shap.summary_plot(val, plot_type='violin'))
 
 
 
