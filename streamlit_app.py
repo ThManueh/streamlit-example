@@ -18,18 +18,18 @@ from streamlit_shap import st_shap
 
 
 
-@st.cache
-def load_data():
-    return shap.datasets.adult()
+# @st.cache
+# def load_data():
+#     return shap.datasets.adult()
 
-def st_shap(plot, height=None):
-    shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
-    components.html(shap_html, height=height)
+# def st_shap(plot, height=None):
+#     shap_html = f"<head>{shap.getjs()}</head><body>{plot.html()}</body>"
+#     components.html(shap_html, height=height)
 
-st.title("SHAP in Streamlit")
+# st.title("SHAP in Streamlit")
 
-# train XGBoost model
-X,y = load_data()
+# # train XGBoost model
+# X,y = load_data()
 
 trainData = pd.read_csv("train.csv")
 testData = pd.read_csv("test.csv")
