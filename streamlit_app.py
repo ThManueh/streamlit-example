@@ -111,6 +111,7 @@ def bind_socket():
         error = sklearn.metrics.mean_squared_error(y_train, y_pred)
 
         # output: evaluation score
+        st.write("mean_squared_error ", error)
         return error
 
     study = optuna.create_study(direction='minimize')
