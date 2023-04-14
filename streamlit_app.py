@@ -309,7 +309,7 @@ X_test = testData.select_dtypes(include=['float64', 'int64'])
 X_test = X_test[np.isfinite(X_test).all(1)]
 
 
-st_shap(shap.dependence_plot(0, val, X_test))
+st_shap(shap.dependence_plot(0, val[0], X_test))
 st_shap(shap.summary_plot(val, plot_type='violin'))
 
 
