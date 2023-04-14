@@ -257,36 +257,6 @@ def train():
 
 
 
-
-
-
-
-gbm = train()
-def test():
-
-
-    df = pd.DataFrame(mydict)
-
-
-    # ,predict_disable_shape_check=True
-    # print(gbm.predict(df, num_iteration=gbm.best_iteration))
-    #st.write(gbm.predict(df, num_iteration=gbm.best_iteration));
-    desired_representation = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0])
-    st.write(desired_representation);
-
-
-#     testData = testData.drop('Id', axis=1)
-#     X_test = testData.select_dtypes(include=['float64', 'int64'])
-#     X_test = X_test[np.isfinite(X_test).all(1)]
-
-
-#     explainer = shap.Explainer(gbm.predict, X_test)
-#     shap_values = explainer(X_test)
-
-#     #st_shap(shap.summary_plot(shap_values), height=1080)
-#     st_shap(shap.summary_plot(shap_values, plot_type='violin'), height=1080)
-
-
 @st.cache
 def displaySHAP():
     trainData = pd.read_csv("train.csv")
@@ -315,7 +285,37 @@ def displaySHAP():
     st_shap(shap.summary_plot(shap_values, plot_type='violin'))
 
 
-displaySHAP();
+
+
+gbm = train()
+def test():
+
+
+    df = pd.DataFrame(mydict)
+
+
+    # ,predict_disable_shape_check=True
+    # print(gbm.predict(df, num_iteration=gbm.best_iteration))
+    #st.write(gbm.predict(df, num_iteration=gbm.best_iteration));
+    desired_representation = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0])
+    st.write(desired_representation);
+
+    displaySHAP();
+#     testData = testData.drop('Id', axis=1)
+#     X_test = testData.select_dtypes(include=['float64', 'int64'])
+#     X_test = X_test[np.isfinite(X_test).all(1)]
+
+
+#     explainer = shap.Explainer(gbm.predict, X_test)
+#     shap_values = explainer(X_test)
+
+#     #st_shap(shap.summary_plot(shap_values), height=1080)
+#     st_shap(shap.summary_plot(shap_values, plot_type='violin'), height=1080)
+
+
+
+
+
 st.button("sup",on_click=test)
 
 
