@@ -4,3 +4,4 @@ streamlit
 shap
 sklearn
 matplotlib
+xgboost
