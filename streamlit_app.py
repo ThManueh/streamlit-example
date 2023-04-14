@@ -289,6 +289,9 @@ def train1():
 
 
 gbm = train()
+
+
+st.markdown('Streamlit is **_really_ cool**.')
 def test(gbm):
 
     df = pd.DataFrame(mydict)
