@@ -292,8 +292,8 @@ def test():
     df = pd.DataFrame(mydict)
     
     
-    desired_representationBellow = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0]-best_value)
-    desired_representationAbove = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0]+best_value)
+    desired_representationBellow = "{:0,.4f}".format((gbm.predict(df, num_iteration=gbm.best_iteration)[0])-best_value)
+    desired_representationAbove = "{:0,.4f}".format((gbm.predict(df, num_iteration=gbm.best_iteration)[0])+best_value)
     
     
     st.write(desired_representationBellow);
