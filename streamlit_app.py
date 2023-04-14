@@ -255,7 +255,6 @@ def test():
 
     df = pd.DataFrame(mydict)
 
-    gbm.fit
 
     # ,predict_disable_shape_check=True
     # print(gbm.predict(df, num_iteration=gbm.best_iteration))
@@ -264,16 +263,16 @@ def test():
     st.write(desired_representation);
 
 
-    testData = testData.drop('Id', axis=1)
-    X_test = testData.select_dtypes(include=['float64', 'int64'])
-    X_test = X_test[np.isfinite(X_test).all(1)]
+#     testData = testData.drop('Id', axis=1)
+#     X_test = testData.select_dtypes(include=['float64', 'int64'])
+#     X_test = X_test[np.isfinite(X_test).all(1)]
 
 
-    explainer = shap.Explainer(gbm.predict, X_test)
-    shap_values = explainer(X_test)
+#     explainer = shap.Explainer(gbm.predict, X_test)
+#     shap_values = explainer(X_test)
 
-    #st_shap(shap.summary_plot(shap_values), height=1080)
-    st_shap(shap.summary_plot(shap_values, plot_type='violin'), height=1080)
+#     #st_shap(shap.summary_plot(shap_values), height=1080)
+#     st_shap(shap.summary_plot(shap_values, plot_type='violin'), height=1080)
 
 
 
