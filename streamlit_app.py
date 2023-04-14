@@ -287,12 +287,6 @@ def train1():
 
 
 
-st_shap(shap.summary_plot(train1(), plot_type='violin'))
-
-
-
-
-
 gbm = train()
 def test():
     df = pd.DataFrame(mydict)
@@ -304,6 +298,12 @@ def test():
 
 
 st.button("sup",on_click=test)
+
+
+
+st_shap(shap.summary_plot(train1(), plot_type='violin'))
+
+
 
 
 
