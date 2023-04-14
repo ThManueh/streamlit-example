@@ -305,6 +305,7 @@ gbm = train()
 def test(gbm):
 
     df = pd.DataFrame(mydict)
+    gbm = gbm.attr('lower_bound')
 
 #     desired_representationBellow = "{:0,.4f}".format((gbm.predict(df, num_iteration=gbm.best_iteration)[0])-best_value)
 #     desired_representationAbove = "{:0,.4f}".format((gbm.predict(df, num_iteration=gbm.best_iteration)[0])+best_value)
