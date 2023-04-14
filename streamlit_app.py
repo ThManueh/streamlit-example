@@ -289,22 +289,23 @@ def train1():
 
 gbm = train()
 def test(gbm):
+
     df = pd.DataFrame(mydict)
     
     
 #     desired_representationBellow = "{:0,.4f}".format((gbm.predict(df, num_iteration=gbm.best_iteration)[0])-best_value)
 #     desired_representationAbove = "{:0,.4f}".format((gbm.predict(df, num_iteration=gbm.best_iteration)[0])+best_value)
     
-    desired_representationLow = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0])
+    desired_representationLow = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0]);
     st.write(desired_representationLow)
     
     
-   desired_representationa = "{:0,.4f}".format(best_value)
-   st.write(desired_representationa)
+    desired_representationa = "{:0,.4f}".format(best_value)
+    st.write(desired_representationa)
 #     st.write(desired_representationBellow);
 #     st.write(desired_representationAbove);
    
-   st_shap(shap.summary_plot(train1(), plot_type='violin'))
+    st_shap(shap.summary_plot(train1(), plot_type='violin'))
 
 
 
