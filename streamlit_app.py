@@ -114,7 +114,7 @@ def bind_socket():
         return error
 
     study = optuna.create_study(direction='minimize')
-    study.optimize(objective, n_trials=1);
+    study.optimize(objective, n_trials=50);
 
     print("The Best value was: ", study.best_value);
 
@@ -292,10 +292,12 @@ def test():
     df = pd.DataFrame(mydict)
     
     
+    desired_representationBellow = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0]-best_value)
+    desired_representationAbove = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0]+best_value)
     
     
-    desired_representation = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0])
-    st.write(desired_representation);
+    st.write(desired_representationBellow);
+    st.write(desired_representationAbove);
     
 
     
