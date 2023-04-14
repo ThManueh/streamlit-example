@@ -124,29 +124,29 @@ best_params,best_value   = bind_socket()
 
 
 
-st.write(best_params);
-st.write(best_value);
+#st.write(best_params);
+#st.write(best_value);
 
 
 
 
 MSSubClass = st.sidebar.slider('What is the building class?' , 20, 90)
-st.write(MSSubClass)
+#st.write(MSSubClass)
 
 LotFrontage = st.sidebar.slider('Select a LotFrontage' , 20, 120)
-st.write(LotFrontage)
+#st.write(LotFrontage)
 
 
 LotArea = st.sidebar.slider('Select a LotArea' , 50, 25000)
-st.write(LotArea)
+#st.write(LotArea)
 
 
 OverallQual = st.sidebar.slider('Select a Quality2' , 1, 10)
-st.write(LotArea)
+#st.write(LotArea)
 
 
 OverallCond = st.sidebar.slider('Select a Condition' , 1, 10)
-st.write(LotArea)
+#st.write(LotArea)
 LotFrontage = st.sidebar.slider('Linear feet of street connected to property' ,20, 330)
 OverallQual= st.sidebar.slider('Rates the overall material and finish of the house' ,0, 10)
 OverallCond= st.sidebar.slider('Rates the overall condition of the house' ,0, 10)
