@@ -217,8 +217,13 @@ if (buttomPress):
     st_shap(shap.plots.scatter(shap_values[:,:]))
 
     df = pd.DataFrame(mydict)
-    shap_interaction_values = shap.TreeExplainer(gbm).shap_interaction_values(df.iloc[:2000, :])
-    st_shap(shap.summary_plot(shap_interaction_values, df.iloc[:2000, :]))
+
+    testData = pd.read_csv("test.csv")
+    testData = testData.drop('Id', axis=1)
+    X_test = testData.select_dtypes(include=['float64', 'int64'])
+    X_test = X_test[np.isfinite(X_test).all(1)]
+    shap_interaction_values = shap.TreeExplainer(gbm).shap_interaction_values(X_test.iloc[:2000, :])
+    st_shap(shap.summary_plot(shap_interaction_values, X_test.iloc[:2000, :]))
 
 
 
