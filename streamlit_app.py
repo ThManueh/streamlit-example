@@ -301,7 +301,7 @@ def ShapValue():
 gbm = train()
 
 
-
+st.title('<div style="text-align: center;">Hello World!</div>', unsafe_allow_html=True)
 def test(gbm):
 
     df = pd.DataFrame(mydict)
@@ -321,7 +321,7 @@ def test(gbm):
 #     st.write(desired_representationAbove);
    
 
-buttomPress = st.button('<div style="text-align: center;">Hello World!</div>', unsafe_allow_html=True)
+buttomPress = st.button("Calculate the house price")
 if (buttomPress):
     test(gbm)
     buttomPress= False
