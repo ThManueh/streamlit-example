@@ -321,7 +321,7 @@ def test(gbm):
 #     st.write(desired_representationAbove);
    
 
-buttomPress = st.button('<div style="text-align: center;">Hello World!</div>')
+buttomPress = st.button('<div style="text-align: center;">Hello World!</div>', unsafe_allow_html=True)
 if (buttomPress):
     test(gbm)
     buttomPress= False
