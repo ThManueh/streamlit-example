@@ -130,27 +130,27 @@ best_params,best_value   = bind_socket()
 
 
 
-MSSubClass = st.sidebar.slider('What is the building class?' , 20, 90)
+MSSubClass = st.sidebar.slider('Identifies the type of dwelling involved in the sale' , 20, 90)
 #st.write(MSSubClass)
 
-LotFrontage = st.sidebar.slider('Select a LotFrontage' , 20, 120)
+LotFrontage = st.sidebar.slider('Linear feet of street connected to property' , 20, 120)
 #st.write(LotFrontage)
 
 
-LotArea = st.sidebar.slider('Select a LotArea' , 50, 25000)
+LotArea = st.sidebar.slider('Lot size in square feet' , 50, 25000)
 #st.write(LotArea)
 
 
-OverallQual = st.sidebar.slider('Select a Quality2' , 1, 10)
+OverallQual = st.sidebar.slider('Rates the overall material and finish of the house' , 1, 10)
 #st.write(LotArea)
 
 
-OverallCond = st.sidebar.slider('Select a Condition' , 1, 10)
+OverallCond = st.sidebar.slider('Rates the overall condition of the house' , 1, 10)
 #st.write(LotArea)
 LotFrontage = st.sidebar.slider('Linear feet of street connected to property' ,20, 330)
 OverallQual= st.sidebar.slider('Rates the overall material and finish of the house' ,0, 10)
 OverallCond= st.sidebar.slider('Rates the overall condition of the house' ,0, 10)
-YearBuilt = st.sidebar.slider('Remodel date (same as construction date if no remodeling or additions)' ,1872, 2010)
+YearBuilt = st.sidebar.slider('Year Built. Remodel date (same as construction date if no remodeling or additions)' ,1872, 2010)
 YearRemodAdd = st.sidebar.slider('Remodel date (same as construction date if no remodeling or additions)' ,1950, 2010)
 MasVnrArea = st.sidebar.slider('Masonry veneer area in square feet' ,0, 2000)
 BsmtFinSF1 = st.sidebar.slider('Type 1 finished square feet' ,0, 2000)
