@@ -215,5 +215,13 @@ if (buttomPress):
     st_shap(shap.plots.dependence_plot(shap_values))
 
     st_shap(shap.plots.scatter(shap_values[:,:]))
-    #st_shap(shap.summary_plot(ShapValue(), plot_type='violin'))
+
+    df = pd.DataFrame(mydict)
+    shap_interaction_values = shap.TreeExplainer(gbm).shap_interaction_values(df.iloc[:2000, :])
+    shap.summary_plot(shap_interaction_values, df.iloc[:2000, :])
+
+
+
+
+    st_shap(shap.summary_plot(ShapValue(), plot_type='violin'))
     buttomPress = False
