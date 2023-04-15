@@ -316,15 +316,16 @@ def test(gbm):
     st.write("The predicted house value is: ", desired_representationLow)
     #st.write(gbm.lower_bound())
     
-    desired_representationa = "{:0,.4f}".format(best_value)
-    st.write(desired_representationa)
+    #desired_representationa = "{:0,.4f}".format(best_value)
+    #st.write(desired_representationa)
 #     st.write(desired_representationBellow);
 #     st.write(desired_representationAbove);
-   
+
 
 buttomPress = st.button("Calculate the house price")
 if (buttomPress):
     test(gbm)
+    st_shap(shap.summary_plot(ShapValue(), plot_type='violin'))
     buttomPress= False
 
 
