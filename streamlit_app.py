@@ -306,13 +306,13 @@ def test(gbm):
 
     df = pd.DataFrame(mydict)
     # gbm = gbm.set_attr('lower_bound')
-    st.write("lower : ", gbm.lower_bound())
-    st.write("Upper : ", gbm.upper_bound())
+    # st.write("lower : ", gbm.lower_bound())
+    # st.write("Upper : ", gbm.upper_bound())
 #     desired_representationBellow = "{:0,.4f}".format((gbm.predict(df, num_iteration=gbm.best_iteration)[0])-best_value)
 #     desired_representationAbove = "{:0,.4f}".format((gbm.predict(df, num_iteration=gbm.best_iteration)[0])+best_value)
 
     desired_representationLow = "{:0,.4f}".format(gbm.predict(df, num_iteration=gbm.best_iteration)[0]);
-    st.write(desired_representationLow)
+    st.write("The predicted house value is: ", desired_representationLow)
     #st.write(gbm.lower_bound())
     
     desired_representationa = "{:0,.4f}".format(best_value)
@@ -321,7 +321,7 @@ def test(gbm):
 #     st.write(desired_representationAbove);
    
 
-buttomPress = st.button("Calculate the house price")
+buttomPress = st.button('<div style="text-align: center;">Hello World!</div>')
 if (buttomPress):
     test(gbm)
     buttomPress= False
