@@ -213,6 +213,6 @@ if (buttomPress):
     st_shap(shap.plots.waterfall(ShapValue()[0], max_display=12))
     st_shap(shap.plots.waterfall(ShapValue()[0], max_display=12))
     shap_values = ShapValue()
-    st_shap(shap.plots.scatter(shap_values[:, shap_values.abs.mean(0).argsort[-1]]))
+    st_shap(shap.plots.scatter(shap_values[:,:,0]))
     #st_shap(shap.summary_plot(ShapValue(), plot_type='violin'))
     buttomPress = False
