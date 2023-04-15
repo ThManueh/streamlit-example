@@ -182,7 +182,7 @@ PoolArea = st.sidebar.slider('Pool area in square feet' , 0, 1000)
 MiscVal = st.sidebar.slider('Value of miscellaneous feature' , 0, 1000)
 MoSold = st.sidebar.slider('In which year was month it was sold?' , 1, 12)
 YrSold = st.sidebar.slider('In which year was it sold?' , 2006, 2010)
-st.write('https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview')
+
 
 
 mydict = [
@@ -302,6 +302,7 @@ gbm = train()
 
 st.header('House price prediction')
 
+st.write('https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview')
 def test(gbm):
 
     df = pd.DataFrame(mydict)
