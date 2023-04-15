@@ -212,13 +212,13 @@ if (buttomPress):
     shap_values = ShapValue()
     st_shap(shap.plots.bar(shap_values,max_display=12))
     st_shap(shap.plots.waterfall(shap_values[0], max_display=12))
-    st_shap(shap.plots.dependence_plot(shap_values))
+    #st_shap(shap.plots.dependence_plot(shap_values))
 
     st_shap(shap.plots.scatter(shap_values[:,:]))
 
     df = pd.DataFrame(mydict)
     shap_interaction_values = shap.TreeExplainer(gbm).shap_interaction_values(df.iloc[:2000, :])
-    shap.summary_plot(shap_interaction_values, df.iloc[:2000, :])
+    st_shap(shap.summary_plot(shap_interaction_values, df.iloc[:2000, :]))
 
 
 
