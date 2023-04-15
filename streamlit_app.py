@@ -178,7 +178,7 @@ def ShapValue():
     X_test = X_test[np.isfinite(X_test).all(1)]
 
     df = pd.DataFrame(mydict)
-    explainer = shap.Explainer(model.predict, X_test)
+    explainer = shap.Explainer(model.predict, df)
     shap_values = explainer(df)
 
     return shap_values
