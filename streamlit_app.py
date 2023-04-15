@@ -209,6 +209,6 @@ def test(gbm):
 buttomPress = st.button("Calculate the house price")
 if (buttomPress):
     test(gbm)
-    st_shap(shap.plots.bar(ShapValue()))
+    st_shap(shap.plots.bar(ShapValue()),max_display=12)
     #st_shap(shap.summary_plot(ShapValue(), plot_type='violin'))
     buttomPress = False
