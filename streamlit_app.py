@@ -228,5 +228,5 @@ if (buttomPress):
 
 
 
-    st_shap(shap.summary_plot(ShapValue(), plot_type='violin'))
+    #st_shap(shap.summary_plot(ShapValue(), plot_type='violin'))
     buttomPress = False
